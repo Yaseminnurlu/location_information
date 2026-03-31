@@ -5,9 +5,8 @@ plugins {
 
 android {
     namespace = "com.example.location_information"
-    compileSdk {
-        version = release(36)
-    }
+    compileSdk = 36
+
 
     defaultConfig {
         applicationId = "com.example.location_information"
@@ -15,7 +14,7 @@ android {
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
-
+        manifestPlaceholders["MAPS_API_KEY"] = project.findProperty("MAPS_API_KEY").toString()
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -38,6 +37,13 @@ android {
 }
 
 dependencies {
+    implementation("com.google.maps.android:maps-compose:4.3.3")
+    implementation("com.google.android.gms:play-services-location:21.3.0")
+    implementation("com.google.android.gms:play-services-maps:19.0.0")
+    implementation("com.google.accompanist:accompanist-permissions:0.34.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.7.3")
+    implementation("androidx.compose.material:material-icons-extended:1.7.8")
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
